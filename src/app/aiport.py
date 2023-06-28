@@ -1,20 +1,5 @@
 import math
-from tps import TPS_Transaction
-
-class AppendStopTransaction(TPS_Transaction):
-    def __init__(self, init_stops, init_code):
-        super().__init__()
-        self.code = init_code
-        self.trip_stops = init_stops
-
-    def do_transaction(self):
-        self.trip_stops.append(self.code)
-
-    def undo_transaction(self):
-        self.trip_stops.pop()
-
-    def to_string(self):
-        return "Appending Stop"
+from tps.pyTPS import pyTPS_Transaction
 
 class Airport:
     def __init__(self, initCode, initLatitudeDegrees, initLatitudeMinutes, initLongitudeDegrees, initLongitudeMinutes):
@@ -59,4 +44,18 @@ class Airport:
         x2 = (math.sqrt(1.0 - (x * x)) / x)
         distance = (EARTH_RADIUS * math.atan(x2))
         return distance
-    
+
+class AppendStopTransaction(pyTPS_Transaction):
+    def __init__(self, init_stops, init_code):
+        super().__init__()
+        self.code = init_code
+        self.trip_stops = init_stops
+
+    def do_transaction(self):
+        self.trip_stops.append(self.code)
+
+    def undo_transaction(self):
+        self.trip_stops.pop()
+
+    def to_string(self):
+        return "Appending Stop"  
