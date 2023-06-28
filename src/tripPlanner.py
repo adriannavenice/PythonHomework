@@ -108,21 +108,21 @@ def process_user_input():
                     print("DUPLICATE STOP ERROR - NO STOP ADDED")
                 else:
                     transaction = AppendStopTransaction(stops, entered_code)
-                    tps.add_transaction(transaction)
+                    tps.addTransaction(transaction)
             else:
                 transaction = AppendStopTransaction(stops, entered_code)
-                tps.add_transaction(transaction)
+                tps.addTransaction(transaction)
         else:
             print("INVALID AIRPORT CODE ERROR - NO STOP ADDED")
     # UNDO A TRANSACTION
     elif choice == "U":
-        tps.undo_transaction()
+        tps.undoTransaction()
     # REDO A TRANSACTION
     elif choice == "R":
-        tps.do_transaction()
+        tps.doTransaction()
     # CLEAR ALL TRANSACTIONS
     elif choice == "E":
-        tps.clear_all_transactions()
+        tps.clearAllTransactions()
     # QUIT
     elif choice == "Q":
         return False

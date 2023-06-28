@@ -75,18 +75,18 @@ class pyTPS:
             text += "----{}\n".format(transaction.toString())
         return text
 
-from abc import ABC, abstractmethod
+from abc import ABC
 
 class pyTPS_Transaction(ABC):
-    @abstractmethod
+    
     def doTransaction(self):
         pass
 
-    @abstractmethod
+    
     def undoTransaction(self):
         pass
 
-    @abstractmethod
+
     def toString(self):
         pass
 
