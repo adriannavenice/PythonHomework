@@ -4,19 +4,11 @@ from tps.pyTPS import pyTPS
 from graph.weightedGraph import WeightedGraph
 from app.aiport import AppendStopTransaction
 
-# Rest of the code...
-
-
-# Rest of the code...
-
-
-# WE WANT TO USE THE TRANSACTION PROCESSING SYSTEM
 tps = pyTPS()
 
-# WE WANT TO USE THE GRAPH DATA STRUCTURE
+#GRAPH DATA STRUCTURE
 airport_graph = WeightedGraph()
-
-# THESE ARE THE STOPS
+# STOPS
 stops = []
 
 def display_airports():
@@ -67,11 +59,11 @@ def display_current_trip():
                 for i in range(len(route) - 1):
                     a1 = airport_graph.get_node_data(route[i])
                     a2 = airport_graph.get_node_data(route[i + 1])
-                    distance = Airport.calculate_distance(a1, a2)
+                    distance = Airport.calculateDistance(a1, a2)
                     leg_distance += distance
                     if i == 0:
-                        text += a1.get_code()
-                    text += "-" + a2.get_code()
+                        text += a1.getCode()
+                    text += "-" + a2.getCode()
                 text += " (Leg Distance: " + str(leg_distance) + " miles)\n"
 
             # MOVE TO THE NEXT LEG
@@ -94,7 +86,7 @@ def get_user_input(prompt):
     answer = input(prompt)
     return answer
 
-def process_user_input():
+def process_user_input(tps):
     choice = get_user_input("-")
     if choice == "S":
         entered_code = get_user_input("\nEnter the Airport Code: ")
@@ -159,5 +151,5 @@ while keep_going:
     display_airports()
     display_current_trip()
     display_menu()
-    keep_going = process_user_input()
+    keep_going = process_user_input(tps)
 

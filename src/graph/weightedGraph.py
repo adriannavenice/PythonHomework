@@ -58,7 +58,7 @@ class WeightedGraph:
     def get_neighbor_weight(self, node1, node2):
         if self.are_neighbors(node1, node2):
             edge_id = self.get_edge_id(node1, node2)
-            return self.edges[edge_id].get_weight()
+            return self.edges[edge_id].getWeight()
         return 0.0
 
     def find_path(self, node1, node2):
@@ -83,9 +83,9 @@ class WeightedGraph:
                 if neighbor not in visited:
                     edge_id = self.get_edge_id(last, neighbor)
                     edge = self.edges[edge_id]
-                    if edge.get_weight() < closest_distance:
+                    if edge.getWeight() < closest_distance:
                         closest_index = i
-                        closest_distance = edge.get_weight()
+                        closest_distance = edge.getWeight()
 
             if closest_index >= 0:
                 closest_node = neighbors[closest_index]

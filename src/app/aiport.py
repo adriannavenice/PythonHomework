@@ -1,5 +1,15 @@
-import math
+import sys
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
+from tps.pyTPS import pyTPS
 from tps.pyTPS import pyTPS_Transaction
+import math
+
+
 
 class Airport:
     def __init__(self, initCode, initLatitudeDegrees, initLatitudeMinutes, initLongitudeDegrees, initLongitudeMinutes):
@@ -51,11 +61,11 @@ class AppendStopTransaction(pyTPS_Transaction):
         self.code = init_code
         self.trip_stops = init_stops
 
-    def do_transaction(self):
+    def doTransaction(self):
         self.trip_stops.append(self.code)
 
-    def undo_transaction(self):
+    def undoTransaction(self):
         self.trip_stops.pop()
 
-    def to_string(self):
-        return "Appending Stop"  
+    def toString(self):
+        return "Appending Stop"
