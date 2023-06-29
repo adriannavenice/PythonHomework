@@ -74,19 +74,22 @@ class pyTPS:
             transaction = self.transactions[i]
             text += "----{}\n".format(transaction.toString())
         return text
+    
+    def getTransactions(self):
+        return self.transactions
+
 
 from abc import ABC
 
 class pyTPS_Transaction(ABC):
-    
     def doTransaction(self):
         pass
-
     
     def undoTransaction(self):
         pass
-
-
+    
+    def redo(self):
+        pass
+    
     def toString(self):
         pass
-

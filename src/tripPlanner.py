@@ -108,13 +108,16 @@ def process_user_input(tps):
             print("INVALID AIRPORT CODE ERROR - NO STOP ADDED")
     # UNDO A TRANSACTION
     elif choice == "U":
-        tps.undoTransaction()
+       tps.undoTransaction()
+       if len(stops) > 0:  # Remove the last stop from the list
+            stops.pop()
     # REDO A TRANSACTION
     elif choice == "R":
         tps.doTransaction()
     # CLEAR ALL TRANSACTIONS
     elif choice == "E":
         tps.clearAllTransactions()
+        stops.clear()
     # QUIT
     elif choice == "Q":
         return False

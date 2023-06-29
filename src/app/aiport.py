@@ -66,6 +66,10 @@ class AppendStopTransaction(pyTPS_Transaction):
 
     def undoTransaction(self):
         self.trip_stops.pop()
+    
+    def redo(self):
+        self.doTransaction()
 
     def toString(self):
         return "Appending Stop"
+
