@@ -109,7 +109,7 @@ def process_user_input(tps):
     # UNDO A TRANSACTION
     elif choice == "U":
        tps.undoTransaction()
-       if len(stops) > 0:  # Remove the last stop from the list
+       if len(stops) > 0:  
             stops.pop()
     # REDO A TRANSACTION
     elif choice == "R":
@@ -124,7 +124,7 @@ def process_user_input(tps):
     return True
 
 def init_all_airports():
-    # FIRST ADD ALL THE AIRPORTS
+    #  READING JSON
     with open('data/Flights.json', 'r') as f:
         airport_data = json.load(f)
         for airport_json in airport_data['airports']:
@@ -135,7 +135,7 @@ def init_all_airports():
                                    airport_json['longitudeMinutes'])
             airport_graph.add_node(airport_json['code'], new_airport)
 
-        # NOW CONNECT THE AIRPORTS
+    
         for edge_json in airport_data['edges']:
             init_edge(edge_json[0], edge_json[1])
 
@@ -148,7 +148,6 @@ def init_edge(node1, node2):
 
 init_all_airports()
 
-# LOOP FLAG VARIABLE
 keep_going = True
 while keep_going:
     display_airports()

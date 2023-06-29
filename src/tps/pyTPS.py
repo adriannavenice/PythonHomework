@@ -43,6 +43,9 @@ class pyTPS:
             transaction.doTransaction()
             self.mostRecentTransaction += 1
             self.performingDo = False
+        else:
+            pass
+
 
     def undoTransaction(self):
         if self.hasTransactionToUndo():
